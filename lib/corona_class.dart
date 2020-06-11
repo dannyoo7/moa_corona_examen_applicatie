@@ -1,21 +1,21 @@
 class coronaInfo{
-  var name;
-  int dead;
-  int survived;
+  var name; //land
+  int dead; //overeleden
+  int infected;
   int recovered;
   coronaInfo(var name,int dead,int survived,int recovered){
     this.name = name;
     this.dead = dead;
-    this.survived = survived;
+    this.infected = survived;
     this.recovered = recovered;
   }
   List liststring(){ // coronadata[number].liststring();
     var deadstring = this.dead.toString();
-    var survivedstring = this.survived.toString();
+    var infectedstring = this.infected.toString();
     var recoveredstring = this.recovered.toString();
     List<dynamic> datalist = List<dynamic>();
     datalist.add(deadstring);
-    datalist.add(survivedstring);
+    datalist.add(infectedstring);
     datalist.add(recoveredstring);
     return datalist;
   }
