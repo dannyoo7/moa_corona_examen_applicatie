@@ -16,14 +16,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var land = 'nederland';
+  var land = 'nederland'; //standaart land is nederland want de app is nederlands
   var dead = '6.031';
   var infected = '47.903';
   var recovered = 'niet-bekend';
   Map data = {};
   List<dynamic> datalist = List<dynamic>();
   @override
-  void initState(){
+ void initState(){
   super.initState();
   SystemChrome.setEnabledSystemUIOverlays([]);
   SystemChrome.setPreferredOrientations([
@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
     print(datalist);
     bool received = false;
     print(data);
-    if(data != null){ received = true; datalist = data.values.toList();}
+    if(data != null){ received = true; datalist = data.values.toList();} //kijk of er data binnenkomt en sla dat op
     if(received == true){
       land = datalist[2].toString();
       dead = datalist[0].toString();
@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
             Expanded(
               child: FlatButton(
                 child: Text('verlaat app', style: TextStyle(color: Colors.white),),
-                onPressed: ()=> SystemChannels.platform.invokeMethod('SystemNavigator.pop'),//navigeert naar choose_location.dart
+                onPressed: ()=> SystemChannels.platform.invokeMethod('SystemNavigator.pop'),//verlaat app
               ),
             ),
           ],
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
         builder: (context, orientation) {
           var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
           print(isPortrait);
-          print("portrait");
+          if(isPortrait == false){Navigator.push(context,MaterialPageRoute(builder: (context) => Coronarules()));}
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
