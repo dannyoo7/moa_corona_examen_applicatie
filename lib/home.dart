@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'package:moa_corona_examen_applicatie/abouth.dart';
 import 'package:moa_corona_examen_applicatie/brochure.dart';
 import 'package:moa_corona_examen_applicatie/choose_location.dart';
 import 'package:moa_corona_examen_applicatie/corona_class.dart';
 import 'package:moa_corona_examen_applicatie/corona_rules.dart';
+import 'package:flutter/services.dart';
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -18,6 +23,14 @@ class _HomeState extends State<Home> {
   Map data = {};
   List<dynamic> datalist = List<dynamic>();
   @override
+  void initState(){
+  super.initState();
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+  ]);
+}
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
     print(datalist);
@@ -49,67 +62,80 @@ class _HomeState extends State<Home> {
               onPressed: (){Navigator.push(context,MaterialPageRoute(builder: (context) => ChooseLocation()));}, //navigeert naar choose_location.dart
               ),
             ),
+            Expanded(
+              child: FlatButton(
+                child: Text('verlaat app', style: TextStyle(color: Colors.white),),
+                onPressed: ()=> SystemChannels.platform.invokeMethod('SystemNavigator.pop'),//navigeert naar choose_location.dart
+              ),
+            ),
           ],
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Expanded( //lands
-              child: Container(
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+          print(isPortrait);
+          print("portrait");
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded( //lands
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(child: Text('land',textAlign: TextAlign.center,),),
+                      Expanded(child: Text('$land',textAlign: TextAlign.center,),),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded( //besmettingen
                 child: Column(
                   children: <Widget>[
-                    Expanded(child: Text('land',textAlign: TextAlign.center,),),
-                    Expanded(child: Text('$land',textAlign: TextAlign.center,),),
+                    Expanded(child: Text('besmettingen'),),
+                    Expanded(child: Text('$infected'),),
                   ],
                 ),
               ),
-          ),
-          Expanded( //besmettingen
-            child: Column(
-              children: <Widget>[
-                Expanded(child: Text('besmettingen'),),
-                Expanded(child: Text('$infected'),),
-              ],
-            ),
-          ),
-          Expanded( //sterf gevallen
-            child: Column(
-              children: <Widget>[
-                Expanded(child: Text('sterf gevallen'),),
-                Expanded(child: Text('$dead'),),
-              ],
-            ),
-          ),
-          Expanded( //herstelden
-            child: Column(
-              children: <Widget>[
-                Expanded(child: Text('herstelden'),),
-                Expanded(child: Text('$recovered'),),
-                Expanded(child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+              Expanded( //sterf gevallen
+                child: Column(
                   children: <Widget>[
-                    FlatButton(
-                        child: Text('abouth'),
-                        onPressed: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => Abouth()));
-                        }
-                    ),
-                    FlatButton(
-                        child: Text('brochure'),
-                        onPressed: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => Brochure()));
-                        }
-                    ),
+                    Expanded(child: Text('sterf gevallen'),),
+                    Expanded(child: Text('$dead'),),
                   ],
-                )),
-              ],
-            ),
-          ),
-        ],
-      ),
+                ),
+              ),
+              Expanded( //herstelden
+                child: Column(
+                  children: <Widget>[
+                    Expanded(child: Text('herstelden'),),
+                    Expanded(child: Text('$recovered'),),
+                    Expanded(child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        FlatButton(
+                            child: Text('abouth'),
+                            onPressed: (){
+                              Navigator.push(context,MaterialPageRoute(builder: (context) => Abouth()));
+                            }
+                        ),
+                        FlatButton(
+                            child: Text('brochure'),
+                            onPressed: (){
+                              Navigator.push(context,MaterialPageRoute(builder: (context) => Brochure()));
+                            }
+                        ),
+                      ],
+                    )),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      )
     );
   }
 }
