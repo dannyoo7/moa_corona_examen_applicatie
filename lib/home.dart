@@ -71,11 +71,11 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: OrientationBuilder(
+      body: OrientationBuilder( //orientatie werkt niet ivm geen functionaliteit
         builder: (context, orientation) {
           var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
           print(isPortrait);
-          if(isPortrait == false){Navigator.push(context,MaterialPageRoute(builder: (context) => Coronarules()));}
+          //if(isPortrait == false){Navigator.push(context,MaterialPageRoute(builder: (context) => Coronarules()));}
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         FlatButton(
-                            child: Text('abouth'),
+                            child: Text('over mij'),
                             onPressed: (){
                               Navigator.push(context,MaterialPageRoute(builder: (context) => Abouth()));
                             }

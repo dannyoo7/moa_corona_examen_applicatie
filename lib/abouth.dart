@@ -10,7 +10,7 @@ class _AbouthState extends State<Abouth> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('abouth'),
+          title: Text('over mij'),
           centerTitle: true,
           elevation: 0,
         ),
@@ -22,6 +22,7 @@ class _AbouthState extends State<Abouth> {
                 child: Container(
                   child: Column(
                     children: <Widget>[
+                      Text("over mij" ,style: TextStyle(fontWeight: FontWeight.bold),),
                       Text("voornaam : danny"),
                       Text("achternaam : lanssink"),
                       Text("leeftijd : 18"),

@@ -57,23 +57,23 @@ class _ChooseLocationState extends State<ChooseLocation> {
             child: Column(
               children: <Widget>[
                 FlatButton(
-                    child: Text('t3'),
+                    child: Text('duitsland'),
                     onPressed: (){
                       Navigator.pushReplacementNamed(context, '/home' ,arguments: {
-                        'dead' : nederland.dead,
-                        'recovered' : nederland.recovered,
-                        'land' : nederland.name,
-                        'infected' : nederland.infected
+                        'dead' : '8.961',
+                        'recovered' : '175000',
+                        'land' : 'duitsland',
+                        'infected' : '192000'
                       });
                     }
                 ),FlatButton(
-                    child: Text('t4'),
+                    child: Text('frankrijk'),
                     onPressed: (){
                       Navigator.pushReplacementNamed(context, '/home' ,arguments: {
-                        'dead' : nederland.dead,
-                        'recovered' : nederland.recovered,
-                        'land' : nederland.name,
-                        'infected' : nederland.infected
+                        'dead' : '29.640',
+                        'recovered' : '74.372',
+                        'land' : 'frankrijk',
+                        'infected' : '160000'
                       });
                     }
                 ),
@@ -84,23 +84,23 @@ class _ChooseLocationState extends State<ChooseLocation> {
             child: Column(
               children: <Widget>[
                 FlatButton(
-                    child: Text('t5'),
+                    child: Text('nieuw-zeeland'),
                     onPressed: (){
                       Navigator.pushReplacementNamed(context, '/home' ,arguments: {
-                        'dead' : nederland.dead,
-                        'recovered' : nederland.recovered,
-                        'land' : nederland.name,
-                        'infected' : nederland.infected
+                        'dead' : '22',
+                        'recovered' : '1.132',
+                        'land' : 'nieuw-zeeland',
+                        'infected' : '1.163'
                       });
                     }
                 ),FlatButton(
-                    child: Text('t6'),
+                    child: Text('polen'),
                     onPressed: (){
                       Navigator.pushReplacementNamed(context, '/home' ,arguments: {
-                        'dead' : nederland.dead,
-                        'recovered' : nederland.recovered,
-                        'land' : nederland.name,
-                        'infected' : nederland.infected
+                        'dead' : '1.356',
+                        'recovered' : '16.1683',
+                        'land' : 'polen',
+                        'infected' : '31.931'
                       });
                     }
                 ),
@@ -111,24 +111,24 @@ class _ChooseLocationState extends State<ChooseLocation> {
             child: Column(
               children: <Widget>[
                 FlatButton(
-                    child: Text('t7'),
+                    child: Text('china'),
                     onPressed: (){
                       Navigator.pushReplacementNamed(context, '/home' ,arguments: {
-                        'dead' : nederland.dead,
-                        'recovered' : nederland.recovered,
-                        'land' : nederland.name,
-                        'infected' : nederland.infected
+                        'dead' : 'onbekend',
+                        'recovered' : 'onbekend',
+                        'land' : 'china',
+                        'infected' : 'onbekend'
                       });
                     }
                 ),
                 FlatButton(
-                    child: Text('t8'),
+                    child: Text('wereldwijd'),
                     onPressed: (){
                       Navigator.pushReplacementNamed(context, '/home' ,arguments: {
-                        'dead' : nederland.dead,
-                        'recovered' : nederland.recovered,
-                        'land' : nederland.name,
-                        'infected' : nederland.infected
+                        'dead' : '469k',
+                        'recovered' : '4.46 mln',
+                        'land' : '8.99 mln',
+                        'infected' : '8.99 mln'
                       });
                     }
                 ),
